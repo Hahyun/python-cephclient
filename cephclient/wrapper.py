@@ -418,6 +418,13 @@ class CephWrapper(client.CephClient):
         else:
             return self.get('osd/tree', **kwargs)
 
+    def osd_df(self, output_method=None, **kwargs):
+        if output_method is not None:
+            return self.get('osd/df?output_method={0}'
+                            .format(output_method), **kwargs)
+        else:
+            return self.get('osd/df', **kwargs)
+
     ###
     # osd PUT calls
     ###
